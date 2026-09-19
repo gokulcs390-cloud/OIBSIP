@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gokul K. | Oasis Infobyte Python Programming Internship (OIBSIP)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: rgba(22, 30, 49, 0.85);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --primary: #38bdf8;
+      --accent: #818cf8;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --badge-bg: rgba(56, 189, 248, 0.15);
+      --badge-text: #38bdf8;
+      --success: #34d399;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(129, 140, 248, 0.12) 0%, transparent 40%);
+      background-attachment: fixed;
+    }
+
+    header {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 50px 24px 30px;
+      text-align: center;
+    }
+
+    .badge-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto 24px;
+    }
+
+    .meta-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .meta-tag {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(2, 132, 199, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(2, 132, 199, 0.5);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.05);
+      color: #e2e8f0;
+      border: 1px solid var(--card-border);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 30px auto 60px;
+      padding: 0 24px;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 28px;
+      backdrop-filter: blur(12px);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56, 189, 248, 0.4);
+    }
+
+    .card-top {
+      margin-bottom: 20px;
+    }
+
+    .task-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .card h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    .feature-list li {
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      padding: 5px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .feature-list li::before {
+      content: "✓";
+      color: var(--success);
+      font-weight: bold;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .tech-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 6px;
+      color: #94a3b8;
+    }
+
+    .card-actions {
+      border-top: 1px solid var(--card-border);
+      padding-top: 16px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .card-btn {
+      flex: 1;
+      text-align: center;
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      background: rgba(56, 189, 248, 0.1);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      transition: all 0.2s;
+    }
+
+    .card-btn:hover {
+      background: rgba(56, 189, 248, 0.2);
+      color: #fff;
+    }
+
+    .how-to-run {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 30px;
+      margin-top: 40px;
+    }
+
+    .code-block {
+      background: #060911;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      color: #38bdf8;
+      overflow-x: auto;
+      margin: 12px 0 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid var(--card-border);
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="badge-top">
+      <span>●</span> Oasis Infobyte (OIBSIP) Fellowship
+    </div>
+    <h1>Python Programming Internship</h1>
+    <p class="subtitle">
+      Comprehensive implementation of assigned tasks featuring full-stack desktop GUIs, SQLite database persistence, interactive Matplotlib data visualization, and real-time API integrations.
+    </p>
+
+    <div class="meta-tags">
+      <div class="meta-tag"><strong>Intern:</strong> Gokul K.</div>
+      <div class="meta-tag"><strong>Offer ID:</strong> OIB/R2/IP9900</div>
+      <div class="meta-tag"><strong>Domain:</strong> Python Programming</div>
+      <div class="meta-tag"><strong>Status:</strong> Tasks 2, 3, 4 Completed ✅</div>
+    </div>
+
+    <div class="cta-buttons">
+      <a href="https://github.com/gokulcs390-cloud/OIBSIP" class="btn btn-primary" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        View GitHub Source Code
+      </a>
+      <a href="https://github.com/gokulcs390-cloud/OIBSIP#readme" class="btn btn-outline" target="_blank">
+        📖 Read Full Documentation
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <div class="section-title">
+      <span>📌</span> Completed Internship Projects
+    </div>
+
+    <div class="grid">
+      <!-- Task 2 -->
+      <div class="card">
+        <div class="card-top">
+          <div class="task-number">Task 02 · Health & Metrics</div>
+          <h2>BMI Calculator</h2>
+          <p>Calculates Body Mass Index with WHO health categorization, multi-user profile persistence, and embedded historical trend plotting.</p>
+          <ul class="feature-list">
+            <li>Beginner CLI with strict input boundary validation</li>
+            <li>Advanced Tkinter GUI with Metric/Imperial support</li>
+            <li>Color-coded health category banner (WHO standards)</li>
+            <li>SQLite database storage (<code>bmi_records.db</code>)</li>
+            <li>Embedded Matplotlib line chart for BMI trends over time</li>
+          </ul>
+        </div>
+        <div>
+          <div class="tech-stack">
+            <span class="tech-pill">Python 3.10+</span>
+            <span class="tech-pill">Tkinter / ttk</span>
+            <span class="tech-pill">SQLite3</span>
+            <span class="tech-pill">Matplotlib</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://github.com/gokulcs390-cloud/OIBSIP/tree/main/Python-Task2-BMICalculator" class="card-btn" target="_blank">Browse Code</a>
+            <a href="https://github.com/gokulcs390-cloud/OIBSIP/blob/main/Python-Task2-BMICalculator/README.md" class="card-btn" target="_blank">Task README</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Task 3 -->
+      <div class="card">
+        <div class="card-top">
+          <div class="task-number">Task 03 · Cybersecurity & Auth</div>
+          <h2>Random Password Generator</h2>
+          <p>Generates cryptographically secure, high-entropy passwords with custom length controls, Shannon entropy rating, and clipboard integration.</p>
+          <ul class="feature-list">
+            <li>Beginner CLI with character pool & length enforcement</li>
+            <li>Advanced GUI powered by CSPRNG <code>secrets</code> module</li>
+            <li>Dynamic real-time password strength meter</li>
+            <li>Exclude ambiguous characters toggle (<code>0, O, 1, l</code>)</li>
+            <li>In-memory session history (last 5 passwords, RAM only)</li>
+          </ul>
+        </div>
+        <div>
+          <div class="tech-stack">
+            <span class="tech-pill">Python 3.10+</span>
+            <span class="tech-pill">secrets (CSPRNG)</span>
+            <span class="tech-pill">Tkinter / ttk</span>
+            <span class="tech-pill">pyperclip</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://github.com/gokulcs390-cloud/OIBSIP/tree/main/Python-Task3-PasswordGenerator" class="card-btn" target="_blank">Browse Code</a>
+            <a href="https://github.com/gokulcs390-cloud/OIBSIP/blob/main/Python-Task3-PasswordGenerator/README.md" class="card-btn" target="_blank">Task README</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Task 4 -->
+      <div class="card">
+        <div class="card-top">
+          <div class="task-number">Task 04 · API & Networking</div>
+          <h2>Basic Weather App</h2>
+          <p>Real-time atmospheric measurements and 5-day weather forecasts with automatic IP geolocation, Pillow condition iconography, and offline demo support.</p>
+          <ul class="feature-list">
+            <li>Beginner CLI with Celsius/Fahrenheit conversion</li>
+            <li>Automatic location detection via IP address (<code>ipinfo.io</code>)</li>
+            <li>Pillow-rendered condition icons with offline fallbacks</li>
+            <li>Hourly weather forecast (next 6-12 hours)</li>
+            <li>5-Day forecast cards with async threaded requests</li>
+          </ul>
+        </div>
+        <div>
+          <div class="tech-stack">
+            <span class="tech-pill">Python 3.10+</span>
+            <span class="tech-pill">OpenWeatherMap</span>
+            <span class="tech-pill">Pillow (PIL)</span>
+            <span class="tech-pill">requests / threading</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://github.com/gokulcs390-cloud/OIBSIP/tree/main/Python-Task4-WeatherApp" class="card-btn" target="_blank">Browse Code</a>
+            <a href="https://github.com/gokulcs390-cloud/OIBSIP/blob/main/Python-Task4-WeatherApp/README.md" class="card-btn" target="_blank">Task README</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Run Guide -->
+    <div class="how-to-run">
+      <h2 style="font-size: 1.3rem; margin-bottom: 8px;">⚡ Quick Start & Run Instructions</h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem;">Clone the repository and run any task directly on your machine:</p>
+      
+      <div class="code-block">
+git clone https://github.com/gokulcs390-cloud/OIBSIP.git<br>
+cd OIBSIP<br>
+pip install -r requirements.txt<br><br>
+# Launch the Interactive Project Hub (Runs all tasks)<br>
+python run_all_hub.py<br><br>
+# Or run individual task GUIs:<br>
+python Python-Task2-BMICalculator/bmi_calculator_gui.py<br>
+python Python-Task3-PasswordGenerator/password_generator_gui.py<br>
+python Python-Task4-WeatherApp/weather_app_gui.py
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Oasis Infobyte Internship Program (OIBSIP) · Completed by <strong>Gokul K.</strong></p>
+    <p style="margin-top: 6px; font-size: 0.8rem;">
+      Repository: <a href="https://github.com/gokulcs390-cloud/OIBSIP" target="_blank">github.com/gokulcs390-cloud/OIBSIP</a>
+    </p>
+  </footer>
+
+</body>
+</html>
